@@ -1,0 +1,137 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #003049;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo-highlight {
+  color: #f77f00;
+}
+
+/* NAV MENU */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: #f77f00;
+  color: #fff;
+}
+
+/* MENU TOGGLE */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: #003049;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    z-index: 9999;
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+  nav.active ul {
+    display: flex;
+  }
+
+  nav.active .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 1rem;
+  }
+
+  .close-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #f77f00;
+  }
+
+  .mobile-contact {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid #fff;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  .mobile-contact a {
+    color: #fcbf49;
+    text-decoration: none;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

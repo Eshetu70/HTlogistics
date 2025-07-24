@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +18,12 @@
       color: #333;
       line-height: 1.8;
       font-size: 18px;
+    }
+
+    h1, h2 {
+      color: #003049;
+      margin-bottom: 1rem;
+      font-weight: bold;
     }
 
     /* HEADER */
@@ -53,117 +58,267 @@
       color: #fff;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s;
       padding: 0.3rem 0.5rem;
+      transition: 0.3s;
     }
 
-    nav ul li a.active {
+    nav ul li a.active, nav ul li a:hover {
       color: #fcbf49;
       border-bottom: 2px solid #fcbf49;
     }
 
-    nav ul li a:hover {
-      color: #fcbf49;
-    }
-
-    /* Hamburger Icon */
     .menu-toggle {
       display: none;
       font-size: 1.8rem;
       cursor: pointer;
-      position: absolute;
-      right: 20px; /* Align on the right */
-      top: 20px;
     }
 
     /* Mobile Menu */
     @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background-color: #003049;
-        width: 100%;
-        padding: 1rem;
-      }
-
-      nav.active ul {
-        display: flex;
-        animation: slideDown 0.3s ease-in-out;
-      }
-
       .menu-toggle {
         display: block;
       }
-
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #003049;
+        padding: 1rem;
       }
+      nav.active ul {
+        display: flex;
+      }
+    }
+
+    /* HERO */
+    .hero {
+      height: 80vh;
+      background: url('images/logistics-bg.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 48, 73, 0.6);
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #fcbf49;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Background Styles */
+    #about {
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    }
+
+    #mission {
+      background: linear-gradient(135deg, #fff5e6, #ffffff);
+    }
+
+    #vision {
+      background: linear-gradient(135deg, #f0f8ff, #ffffff);
+    }
+
+    #values {
+      background: linear-gradient(135deg, #f9f9f9, #e3e6e9);
+    }
+
+    #services {
+      background: linear-gradient(135deg, #e8f5e9, #ffffff);
+    }
+
+    #global {
+      background: linear-gradient(135deg, #f7f7f7, #ffffff);
+    }
+
+    #careers {
+      background: linear-gradient(135deg, #fffaf0, #ffffff);
+    }
+
+    #contact {
+      background: #003049;
+      color: #fff;
+    }
+
+    /* SPLIT ABOUT SECTION */
+    .split {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .split img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* LIST STYLING */
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    ul li::before {
+      content: "\f00c"; /* FontAwesome check icon */
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #f77f00;
+    }
+
+    /* CARDS */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      color: #003049;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #003049;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer a {
+      color: #fcbf49;
+      text-decoration: none;
     }
   </style>
 </head>
-
 <body>
   <!-- HEADER -->
   <header class="navbar">
     <div class="logo"><span class="logo-highlight">HT</span> Logistics LLC</div>
-    <nav id="nav-menu">
+    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')"><i class="fas fa-bars"></i></div>
+    <nav>
       <ul>
-        <li><a href="#about" onclick="showSection('about')" class="active">Who We Are</a></li>
-        <li><a href="#mission" onclick="showSection('mission')">Mission</a></li>
-        <li><a href="#vision" onclick="showSection('vision')">Vision</a></li>
-        <li><a href="#values" onclick="showSection('values')">Values</a></li>
-        <li><a href="#services" onclick="showSection('services')">Services</a></li>
-        <li><a href="#global" onclick="showSection('global')">Global Reach</a></li>
-        <li><a href="#careers" onclick="showSection('careers')">Careers</a></li>
-        <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+        <li><a href="#about" class="active">Who We Are</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#values">Values</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#global">Global Reach</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
   </header>
 
-  <section style="padding: 50px; text-align: center;">
-    <h1>HT Logistics LLC</h1>
-    <p>Click the menu icon on mobile to toggle navigation.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1>Smart Logistics. Global Reach.</h1>
+      <p>Reliable Box Truck & Dispatch Services Across the U.S. and Beyond</p>
+    </div>
   </section>
 
-  <!-- JS -->
-  <script>
-    function toggleMenu() {
-      const navMenu = document.getElementById('nav-menu');
-      const toggleIcon = document.querySelector('.menu-toggle i');
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="split">
+      <div class="image-container">
+        <img src="images/Box Truck.jpg" alt="HT Logistics Fleet">
+      </div>
+      <div class="text-container">
+        <h2>Who We Are</h2>
+        <p>HT Logistics LLC, founded in 2022 in Kansas City, is a fast-growing logistics company backed by over 
+            20 years of leadership experience in retail and international logistics.</p>
+      </div>
+    </div>
+  </section>
 
-      navMenu.classList.toggle('active');
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="images/delivery.jpg" alt="Regional Delivery">
+        <h3>Regional Delivery</h3>
+        <p>Same-day and scheduled transport for businesses in the Midwest and beyond.</p>
+      </div>
+      <div class="card">
+        <img src="images/dispatch.jpg" alt="Dispatch">
+        <h3>24/7 Dispatch</h3>
+        <p>Real-time load coordination and expert support, available 24/7.</p>
+      </div>
+    </div>
+  </section>
 
-      // Change icon (bars ↔ close)
-      if (navMenu.classList.contains('active')) {
-        toggleIcon.classList.remove('fa-bars');
-        toggleIcon.classList.add('fa-times');
-      } else {
-        toggleIcon.classList.remove('fa-times');
-        toggleIcon.classList.add('fa-bars');
-      }
-    }
-
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-
-      document.querySelectorAll('nav ul li a').forEach(link => link.classList.remove('active'));
-      document.querySelector(`a[href="#${id}"]`).classList.add('active');
-
-      document.getElementById('nav-menu').classList.remove('active');
-      document.querySelector('.menu-toggle i').classList.remove('fa-times');
-      document.querySelector('.menu-toggle i').classList.add('fa-bars');
-    }
-  </script>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 HT Logistics LLC. All rights reserved.</p>
+  </footer>
 </body>
-
 </html>
