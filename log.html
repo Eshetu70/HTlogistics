@@ -21,12 +21,6 @@
       font-size: 18px;
     }
 
-    h1,
-    h2 {
-      color: #003049;
-      margin-bottom: 1rem;
-    }
-
     /* HEADER */
     .navbar {
       display: flex;
@@ -72,49 +66,18 @@
       color: #fcbf49;
     }
 
+    /* Hamburger Icon */
     .menu-toggle {
       display: none;
       font-size: 1.8rem;
       cursor: pointer;
+      position: absolute;
+      right: 20px; /* Align on the right */
+      top: 20px;
     }
 
     /* Mobile Menu */
-    .mobile-header {
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 1rem;
-      font-size: 1.2rem;
-      color: #fff;
-      border-bottom: 1px solid #fff;
-    }
-
-    .close-icon {
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    .mobile-contact {
-      display: none;
-      color: white;
-      font-size: 0.9rem;
-      padding: 1rem;
-      text-align: left;
-      border-top: 1px solid #fff;
-    }
-
-    .mobile-contact a {
-      color: #fcbf49;
-      text-decoration: none;
-      display: block;
-      margin-top: 0.3rem;
-    }
-
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
       nav ul {
         display: none;
         flex-direction: column;
@@ -128,11 +91,7 @@
         animation: slideDown 0.3s ease-in-out;
       }
 
-      nav.active .mobile-header {
-        display: flex;
-      }
-
-      nav.active .mobile-contact {
+      .menu-toggle {
         display: block;
       }
 
@@ -148,149 +107,14 @@
         }
       }
     }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      height: 80vh;
-      background: url('images/logistics-bg.jpg') no-repeat center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      text-align: center;
-    }
-
-    .hero-overlay {
-      background: rgba(0, 25, 50, 0.7);
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* SECTIONS */
-    .section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    .dark {
-      background: #dee2e6;
-    }
-
-    /* ABOUT: Image Left Text Right */
-    .split {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .split .image-container {
-      flex: 1;
-      max-width: 45%;
-    }
-
-    .split .image-container img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .split .text-container {
-      flex: 1;
-      max-width: 50%;
-    }
-
-    @media (max-width: 768px) {
-      .split {
-        flex-direction: column;
-      }
-
-      .split .image-container,
-      .split .text-container {
-        max-width: 100%;
-      }
-    }
-
-    /* SERVICES CARDS */
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-
-    .card {
-      flex: 1 1 280px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #003049;
-      color: #fff;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: auto;
-      font-size: 1rem;
-    }
-
-    .footer-content a {
-      color: #fcbf49;
-      text-decoration: none;
-    }
-
-    .footer-content p {
-      margin: 0.5rem 0;
-    }
   </style>
 </head>
 
 <body>
   <!-- HEADER -->
   <header class="navbar">
-    <div class="logo"><span class="logo-highlight">HT</span> Logistics <span class="logo-sub">LLC</span></div>
-    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <div class="logo"><span class="logo-highlight">HT</span> Logistics LLC</div>
     <nav id="nav-menu">
-      <div class="mobile-header">
-        <span>Menu</span>
-        <i class="fas fa-times close-icon" onclick="toggleMenu()"></i>
-      </div>
       <ul>
         <li><a href="#about" onclick="showSection('about')" class="active">Who We Are</a></li>
         <li><a href="#mission" onclick="showSection('mission')">Mission</a></li>
@@ -301,217 +125,31 @@
         <li><a href="#careers" onclick="showSection('careers')">Careers</a></li>
         <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
       </ul>
-      <div class="mobile-contact">
-        <p><strong>Contact Us:</strong></p>
-        <p><a href="tel:+15713205826">📞 571-320-5826</a></p>
-        <p><a href="mailto:htlogisticsllc22@gmail.com">📧 htlogisticsllc22@gmail.com</a></p>
-      </div>
     </nav>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>Smart Logistics. Global Reach.</h1>
-      <p>Reliable Box Truck & Dispatch Services Across the U.S. and Beyond</p>
-      <div id="google_translate_element"></div>
-    </div>
+  <section style="padding: 50px; text-align: center;">
+    <h1>HT Logistics LLC</h1>
+    <p>Click the menu icon on mobile to toggle navigation.</p>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section active">
-    <div class="split">
-      <div class="image-container">
-        <img src="images/Box Truck.jpg" alt="HT Logistics Fleet">
-      </div>
-      <div class="text-container">
-        <h2>Who We Are</h2>
-        <p>HT Logistics LLC, founded in 2022 in Kansas City, is a fast-growing logistics company backed by over 
-            20 years of leadership experience in retail and international logistics. We specialize in box truck 
-            transportation, freight coordination, and advanced dispatching, with an unwavering focus on safety, 
-            technology, and customer satisfaction. Our dedicated team provides personalized solutions to ensure 
-            every shipment is handled with care and delivered on time, supported by modern box trucks, experienced
-             dispatchers, real-time tracking, and 24/7 assistance. Committed to transparency, reliability, and
-              innovation, we simplify logistics so businesses can focus on growth while we manage transportation 
-              complexities. From local deliveries to cross-country freight and global expansion, HT Logistics is 
-              your trusted partner for efficient, tailored logistics solutions. Contact us today to experience
-               logistics done right.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- MISSION -->
-  <section id="mission" class="section dark">
-    <h2>Our Mission</h2>
-   <p> To empower businesses with safe, timely, and cost-effective transport services. We aim to streamline logistics through innovation, real-time tracking, and dedicated customer support.
-    We are committed to building long-term partnerships based on trust, transparency, and exceptional service.
-    Our goal is to simplify logistics for our clients, allowing them to focus on their core business while we handle the complexities of transportation.
-    We strive to set new standards in the box truck logistics industry, ensuring every shipment is handled with care and delivered on time, every time.
-    As we grow, we remain dedicated to our core values of safety, integrity, and customer focus, ensuring that HT Logistics LLC is synonymous with reliability and excellence in logistics.
-   Join us on our journey as we expand our services nationwide and globally, providing innovative logistics solutions that meet the evolving needs of our clients.
-    At HT Logistics, we believe in the power of logistics to connect businesses and communities, driving economic growth and enhancing supply chain efficiency.
-    We are committed to continuous improvement, leveraging technology and industry best practices to deliver exceptional logistics services that exceed our clients' expectations.
-    Contact us today to learn how HT Logistics can help your business thrive with efficient and reliable logistics solutions.</p>    
-
-  </section>
-
-  <!-- VISION -->
-  <section id="vision" class="section">
-    <h2>Our Vision</h2>
-    <p>To become the most trusted name in the box truck logistics industry, setting new standards in efficiency and transparency while growing nationwide and globally.</p>
-    <p>We envision a future where logistics is seamless, with real-time visibility and personalized service at the forefront of every shipment.</p>
-    <p>Our goal is to lead the industry in innovation, leveraging technology to enhance operational efficiency and customer experience.</p>
-    <p>We aim to expand our reach, providing comprehensive logistics solutions that connect businesses across the U.S. and beyond.</p>
-    <p>At HT Logistics, we see a future where our clients can focus on their core business, knowing their logistics needs are in expert hands.</p>
-    <p>We are committed to building a sustainable logistics network that supports economic growth and fosters environmental responsibility.</p>     
-    <p>Our vision is to create a logistics ecosystem that empowers businesses, enhances supply chain efficiency, and drives innovation in the industry.</p>
-    <p>We strive to be a leader in the logistics sector, known for our commitment to safety, reliability, and customer satisfaction.</p>
-    <p>As we grow, we will continue to invest in our people, technology, and processes to ensure HT Logistics remains at the forefront of the logistics industry.</p>
-    <p>Join us on our journey as we redefine logistics, making it smarter, more efficient, and accessible for businesses of all sizes.</p>
-    <p>Contact us today to learn how HT Logistics can help your business thrive with innovative logistics solutions that meet your evolving needs.</p>  
-  </section>
-
-  <!-- VALUES -->
-  <section id="values" class="section dark">
-    <h2>Core Values</h2>
-    <ul>
-      <li><strong>Safety:</strong> Commitment to safe operations and compliance.</li>
-      <li><strong>Integrity:</strong> Transparent and honest in all partnerships.</li>
-      <li><strong>Reliability:</strong> On-time performance, every time.</li>
-      <li><strong>Customer Focus:</strong> Tailored logistics built around your goals.</li>
-      <li><strong>Innovation:</strong> Embracing logistics tech for smarter solutions.</li>
-
-        <li><strong>Collaboration:</strong> Building strong relationships with clients and partners.</li>   
-        <li><strong>Excellence:</strong> Striving for the highest standards in service.</li>
-        <li><strong>Sustainability:</strong> Commitment to environmentally responsible practices.</li>
-        <li><strong>Community:</strong> Supporting local businesses and economies.</li>
-        <li><strong>Growth:</strong> Investing in our people and technology for continuous improvement.</li>
-        <li><strong>Adaptability:</strong> Flexibility to meet changing logistics needs.</li>
-        <li><strong>Empowerment:</strong> Enabling clients to focus on their core business.</li>
-        <li><strong>Respect:</strong> Valuing diversity and fostering an inclusive environment.</li>
-        <li><strong>Accountability:</strong> Taking responsibility for our actions and results.</li>
-        <li><strong>Community Engagement:</strong> Giving back to the communities we serve.</li>
-        <li><strong>Continuous Learning:</strong> Commitment to professional development and industry knowledge.</li>
-        <li><strong>Customer Success:</strong> Your success is our priority, driving us to exceed expectations.</li>
-    </ul>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <h2>Our Services</h2>
-    <div class="card-container">
-      <div class="card">
-        <img src="images/delivery.jpg" alt="Regional Delivery">
-        <h3>Regional Delivery</h3>
-        <p>Same-day and scheduled transport for businesses in the Midwest and beyond.</p>
-        <ul>
-          <li>Local expertise for efficient routing</li>
-          <li>Flexible delivery options to meet your needs</li>
-          <li>Real-time tracking for peace of mind</li>
-        </ul>
-
-      </div>
-      <div class="card">
-        <img src="images/dispatch.jpg" alt="Dispatch Team">
-        <h3>24/7 Dispatch</h3>
-        <p>Real-time load coordination and expert support, available 24/7.</p>
-        <ul>
-          <li>Dedicated dispatch team for immediate assistance</li>
-          <li>Proactive communication to keep you informed</li>
-          <li>Advanced technology for efficient load management</li>
-        </ul>
-      </div>
-      <div class="card">
-        <img src="images/tracking.jpg" alt="Live Tracking">
-        <h3>Live GPS Tracking</h3>
-        <p>Track your shipments in real-time for full visibility and peace of mind.</p>
-        <ul>
-          <li>Instant updates on shipment status</li>
-          <li>Detailed route information and ETAs</li>
-          <li>Alerts for any delays or issues</li>
-        </ul>
-      </div>
-      <div class="card">
-        <img src="images/custom.jpg" alt="Custom Solutions">
-        <h3>Custom Solutions</h3>
-        <p>Tailored services to meet your schedule, budget, and needs.</p>
-        <ul>
-          <li>Flexible transport options for unique requirements</li>
-          <li>Personalized service from our logistics experts</li>
-          <li>Scalable solutions for businesses of all sizes</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- GLOBAL -->
-  <section id="global" class="section dark">
-    <h2>Global Reach</h2>
-    <p>Through strategic partnerships, HT Logistics LLC extends services beyond the U.S., enabling cross-border freight movement with customs support and compliance expertise.</p>
-    <p>We leverage a network of trusted carriers and logistics providers to ensure your shipments reach international destinations safely and efficiently.</p>
-    <p>Our global logistics solutions include:</p>  
-    <ul>
-      <li>International freight forwarding</li>
-      <li>Customs brokerage and compliance</li>
-      <li>Cross-border transportation solutions</li>
-      <li>Real-time tracking for global shipments</li>
-      <li>Dedicated support for international logistics challenges</li>
-    </ul>
-  </section>
-
-  <!-- CAREERS -->
-  <section id="careers" class="section">
-    <h2>Careers</h2>
-    <p>We're hiring drivers, dispatchers, and logistics professionals! Join our team and be part of a fast-moving company with growth opportunities and strong values.</p>
-    <p>At HT Logistics, we value our employees and offer competitive pay, benefits, and a supportive work environment. If you're passionate about logistics and want to make an impact, we want to hear from you!</p>
-    <p>Current Openings:</p>    
-    <ul>
-      <li>Box Truck Drivers</li>
-      <li>Logistics Coordinators</li>
-      <li>Dispatch Specialists</li>
-      <li>Warehouse Associates</li>
-      <li>Customer Service Representatives</li>
-    </ul>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section dark">
-    <h2>Contact Us</h2>
-    <p><strong>HT Logistics LLC</strong><br>
-      7805 NW Tipton Ave, Kansas City, MO 64152<br>
-      Phone: <a href="tel:+15713205826">571-320-5826</a><br>
-      Email: <a href="mailto:htlogisticsllc22@gmail.com">htlogisticsllc22@gmail.com</a></p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 HT Logistics LLC. All rights reserved.</p>
-      <p>Owner: Hailu Sefera</p>
-      <p>Email: <a href="mailto:htlogisticsllc22@gmail.com">htlogisticsllc22@gmail.com</a> | Phone: <a href="tel:+15713205826">571-320-5826</a></p>
-      <p>7805 NW Tipton Ave, Kansas City, MO 64152</p>
-        <p>Follow us on <a href="https://www.facebook.com/HTLogisticsLLC" target="_blank">Facebook</a> | <a href="https://www.instagram.com/htlogisticsllc" target="_blank">Instagram</a> | <a href="https://www.linkedin.com/company/htlogisticsllc" target="_blank">LinkedIn</a></p>
-        <p>We are committed to providing exceptional logistics services with a focus on safety, reliability, and customer satisfaction.</p>
-        <p>For inquiries, please contact us via email or phone.</p>
-    </div>
-  </footer>
-
-  <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <!-- JS for Menu & Tabs -->
+  <!-- JS -->
   <script>
     function toggleMenu() {
-      document.getElementById('nav-menu').classList.toggle('active');
-    }
+      const navMenu = document.getElementById('nav-menu');
+      const toggleIcon = document.querySelector('.menu-toggle i');
 
-    function closeMenu() {
-      document.getElementById('nav-menu').classList.remove('active');
+      navMenu.classList.toggle('active');
+
+      // Change icon (bars ↔ close)
+      if (navMenu.classList.contains('active')) {
+        toggleIcon.classList.remove('fa-bars');
+        toggleIcon.classList.add('fa-times');
+      } else {
+        toggleIcon.classList.remove('fa-times');
+        toggleIcon.classList.add('fa-bars');
+      }
     }
 
     function showSection(id) {
@@ -521,7 +159,9 @@
       document.querySelectorAll('nav ul li a').forEach(link => link.classList.remove('active'));
       document.querySelector(`a[href="#${id}"]`).classList.add('active');
 
-      closeMenu();
+      document.getElementById('nav-menu').classList.remove('active');
+      document.querySelector('.menu-toggle i').classList.remove('fa-times');
+      document.querySelector('.menu-toggle i').classList.add('fa-bars');
     }
   </script>
 </body>
