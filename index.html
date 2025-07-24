@@ -234,35 +234,49 @@ h1, h2 {
 ============================== */
 .hero {
   position: relative;
-  height: 80vh;
-  background: url('images/logistics-bg.jpg') no-repeat center/cover;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
   text-align: center;
 }
 
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
 .hero-overlay {
-  background: rgba(0, 25, 50, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0, 48, 73, 0.65); /* semi-transparent overlay */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   padding: 2rem;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.hero-content {
+  color: #fff;
+  max-width: 900px;
 }
 
-.hero p {
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+.hero-content h1 {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  color: #fff;
 }
+
 
 /* ==============================
    SECTIONS
@@ -431,7 +445,6 @@ footer {
   <!-- HEADER -->
 <header class="navbar">
  <div class="logo">
-  <i class="fas fa-sun sun-icon"></i>
   <span class="logo-highlight">HT</span> Logistics
 </div>
 
@@ -478,13 +491,22 @@ footer {
 
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>Smart Logistics. Global Reach.</h1>
+ <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://video.wixstatic.com/video/11062b_a77bb9a6e557413eb64f31d0723eb787/720p/mp4/file.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Smart Logistics. <span>Global Reach.</span></h1>
       <p>Reliable Box Truck & Dispatch Services Across the U.S. and Beyond</p>
       <div id="google_translate_element"></div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+
+
 
   <!-- ABOUT -->
   <section id="about" class="section active">
