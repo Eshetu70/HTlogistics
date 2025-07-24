@@ -44,11 +44,39 @@ h1, h2 {
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
+  position: relative; /* Important for pseudo-elements */
+  display: inline-block;
+  padding-bottom: 40px; /* Add space for curves */
 }
 
 .logo-highlight {
   color: #f77f00;
 }
+
+/* Both Curved Lines */
+.logo::before,
+.logo::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%; /* Slightly wider than text */
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* Orange Curve */
+.logo::before {
+  bottom: 20px; /* Position above white */
+  border-bottom: 4px solid #f77f00; /* Orange arc */
+}
+
+/* White Curve */
+.logo::after {
+  bottom: 5px; /* Position lower for second arc */
+  border-bottom: 4px solid #fff; /* White arc */
+}
+
 
 /* DESKTOP NAV */
 .nav-links {

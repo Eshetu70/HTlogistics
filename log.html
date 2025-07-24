@@ -39,14 +39,45 @@
       z-index: 999;
     }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
+ .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 40px; /* space for curves */
+}
 
-    .logo-highlight {
-      color: #f77f00;
-    }
+.logo-highlight {
+  color: #f77f00;
+}
+
+/* Curved Line 1 (Orange) */
+.logo::before,
+.logo::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  height: 25px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* First Curve - Orange */
+.logo::before {
+  bottom: 15px;
+  border-bottom: 4px solid #f77f00; /* Orange arc */
+}
+
+/* Second Curve - White */
+.logo::after {
+  bottom: 0;
+  border-bottom: 4px solid #fff; /* White arc */
+}
+
+
+
 
     nav ul {
       display: flex;
@@ -262,6 +293,7 @@
   <!-- HEADER -->
   <header class="navbar">
     <div class="logo"><span class="logo-highlight">HT</span> Logistics LLC</div>
+    
     <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')"><i class="fas fa-bars"></i></div>
     <nav>
       <ul>
