@@ -44,38 +44,52 @@ h1, h2 {
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  position: relative; /* Important for pseudo-elements */
+  position: relative;
   display: inline-block;
-  padding-bottom: 40px; /* Add space for curves */
+  padding-bottom: 60px; /* extra space for 3 curves */
 }
 
 .logo-highlight {
   color: #f77f00;
 }
 
-/* Both Curved Lines */
+/* All pseudo elements for curved lines */
 .logo::before,
 .logo::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 140%; /* Slightly wider than text */
-  height: 30px;
+  width: 150%;
+  height: 35px;
   border-radius: 50%;
 }
 
-/* Orange Curve */
+/* Top Curve (Orange) */
 .logo::before {
-  bottom: 20px; /* Position above white */
-  border-bottom: 4px solid #f77f00; /* Orange arc */
+  bottom: 35px;
+  border-bottom: 4px solid #f77f00; /* Orange solid */
 }
 
-/* White Curve */
+/* Bottom Curve (Orange) */
 .logo::after {
-  bottom: 5px; /* Position lower for second arc */
-  border-bottom: 4px solid #fff; /* White arc */
+  bottom: 5px;
+  border-bottom: 4px solid #f77f00; /* Orange solid */
 }
+
+/* Middle Broken Curve (White Dotted Road) */
+.logo span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  width: 130%;
+  height: 35px;
+  border-radius: 50%;
+  border-bottom: 4px dashed #fff; /* White broken line */
+}
+
 
 
 /* DESKTOP NAV */
