@@ -272,9 +272,25 @@ h1, h2 {
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
+  font-size: 3.1rem;
   text-transform: uppercase;
   color: #fff;
+}
+
+
+
+/* For mobile screens (below 768px) */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;  /* Adjust for tablets */
+  }
+}
+
+/* For very small screens (below 480px) */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6rem;  /* Smaller for phones */
+  }
 }
 
 
@@ -497,7 +513,7 @@ footer {
   </video>
   <div class="hero-overlay">
     <div class="hero-content">
-      <h1>Smart Logistics. <span>Global Reach.</span></h1>
+      <h1>Smart Logistics, <span>Global Reach.</span></h1>
       <p>Reliable Box Truck & Dispatch Services Across the U.S. and Beyond</p>
       <div id="google_translate_element"></div>
     </div>
