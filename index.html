@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HT Logistics LLC</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    #about .image-container img {
+      max-width: 500px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #003049;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-highlight {
+      color: #f77f00;
+      margin-right: 4px;
+    }
+
+    .logo-sub {
+      font-size: 0.8rem;
+      margin-left: 4px;
+      font-weight: 400;
+      color: #e0e0e0;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #fcbf49;
+    }
+
+    .menu-toggle {
+      display:block;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .mobile-header {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .close-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .mobile-contact {
+      display: none;
+      color: white;
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .mobile-contact a {
+      color: #fcbf49;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        background-color: #003049;
+        width: 100%;
+        padding: 1rem;
+        display: none;
+      }
+
+      nav ul li {
+        padding: 0.5rem 0;
+      }
+
+      nav.active ul {
+        display: flex;
+        animation: slideDown 0.3s ease-in-out;
+      }
+
+      nav.active .mobile-contact {
+        display: block;
+      }
+
+      nav.active .mobile-header {
+        display: flex;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    .hero {
+      position: relative;
+      height: 80vh;
+      background-image: url('images/logistics-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 25, 50, 0.7);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-translate {
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+
+    .section {
+      padding: 3rem 2rem;
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section.dark {
+      background-color: #dee2e6;
+    }
+
+    .section h2 {
+      color: #003049;
+      margin-bottom: 1rem;
+    }
+
+    .section ul {
+      margin-left: 1.5rem;
+      list-style: disc;
+    }
+
+    .split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .image-container {
+      flex: 1;
+    }
+
+    .image-container img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .text-container {
+      flex: 1;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .card {
+      flex: 1 1 280px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #003049;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    .contact-info {
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+  </style>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-highlight">HT</span> Logistics <span class="logo-sub">LLC</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav id="nav-menu">
+      <div class="mobile-header">
+        <span>Menu</span>
+        <i class="fas fa-times close-icon" onclick="toggleMenu()"></i>
+      </div>
+      <ul>
+        <li><a href="#about" onclick="closeMenu()">Who We Are</a></li>
+        <li><a href="#mission" onclick="closeMenu()">Mission</a></li>
+        <li><a href="#vision" onclick="closeMenu()">Vision</a></li>
+        <li><a href="#values" onclick="closeMenu()">Values</a></li>
+        <li><a href="#services" onclick="closeMenu()">Services</a></li>
+        <li><a href="#global" onclick="closeMenu()">Global Reach</a></li>
+        <li><a href="#careers" onclick="closeMenu()">Careers</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+      </ul>
+      <div class="mobile-contact">
+        <p><strong>Contact Us:</strong></p>
+        <p><a href="tel:+15713205826">📞 571-320-5826</a></p>
+        <p><a href="mailto:htlogisticsllc22@gmail.com">📧 htlogisticsllc22@gmail.com</a></p>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Smart Logistics. Global Reach.</h1>
+        <p>Reliable Box Truck & Dispatch Services Across the U.S. and Beyond</p>
+      
+        <div id="google_translate_element" class="cta-translate"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section split active">
+    <div class="image-container">
+      <img src="images/Box Truck.jpg" alt="HT Logistics Fleet">
+    </div>
+    <div class="text-container">
+      <h2>Who We Are</h2>
+      <p>HT Logistics LLC is a fast-growing logistics company founded in 2022 in Kansas City. Our leadership brings 20+ years of retail and international logistics expertise to help small and medium-sized businesses thrive.</p>
+      <p>We specialize in box truck transportation, freight coordination, and advanced dispatching, with a focus on safety, technology, and client satisfaction.</p>
+      <p>Our team is dedicated to providing personalized service, ensuring your cargo is handled with care and delivered on time, every time.</p>
+      <p>Whether you need local deliveries or cross-country freight solutions, HT Logistics is your trusted partner for all logistics needs.</p>
+      <p>Based in Kansas City, we serve clients across the Midwest and beyond, with a commitment to excellence and innovation in every shipment.</p>
+      <p>Join us as we expand our services nationwide and globally, bringing efficiency and reliability
+    </div>
+  </section>
+
+  <section id="mission" class="section dark">
+    <h2>Our Mission</h2>
+    <p>To empower businesses with safe, timely, and cost-effective transport services. We aim to streamline logistics through innovation, real-time tracking, and dedicated customer support.</p>
+    <p>We are committed to building long-term partnerships with our clients, ensuring their logistics needs are met with the highest standards of service and reliability.</p>
+    <p>At HT Logistics, we believe in leveraging technology to enhance efficiency and transparency, providing our clients with real-time insights into their shipments and operations.</p>
+    <p>Our mission is to be the backbone of your supply chain, delivering not just goods, but peace of mind. We strive to exceed expectations in every delivery, ensuring your business runs smoothly and efficiently.</p>
+    <p>As we grow, our focus remains on maintaining the highest levels of safety and compliance, ensuring that every shipment meets industry standards and regulations.</p>
+    <p>We are dedicated to continuous improvement, always seeking new ways to enhance our services and provide greater value to our clients. Our mission is to be your go-to logistics partner, no matter where your business takes you.</p>
+  </section>
+
+  <section id="vision" class="section">
+    <h2>Our Vision</h2>
+    <p>To become the most trusted name in the box truck logistics industry, setting new standards in efficiency, transparency, and innovation while growing our nationwide and global footprint.</p>
+    <p>We envision a future where HT Logistics LLC is synonymous with reliability and excellence in logistics, recognized for our commitment to safety, customer service, and technological advancement.</p>
+    <p>Our goal is to expand our services across the U.S. and internationally, providing seamless logistics solutions that connect businesses to their markets with speed and precision.</p>
+    <p>We aim to lead the industry in adopting cutting-edge logistics technology, enhancing our capabilities in real-time tracking, data analytics, and customer engagement.</p>
+    <p>HT Logistics LLC aspires to be a global logistics leader, known for our innovative approach to transportation and our unwavering dedication to client success.</p>
+    <p>We see a future where our logistics solutions not only meet the needs of our clients but also contribute to a more sustainable and efficient supply chain, reducing environmental impact while delivering exceptional service.</p>
+    <p>Through strategic partnerships and continuous improvement, we will expand our reach and capabilities, ensuring that HT Logistics LLC remains at the forefront of the logistics industry for years to come.</p>
+  </section>
+
+  <section id="values" class="section dark">
+    <h2>Core Values</h2>
+    <ul>
+      <li><strong>Safety:</strong> Commitment to safe operations and compliance.</li>
+      <li><strong>Integrity:</strong> Transparent and honest in all partnerships.</li>
+      <li><strong>Reliability:</strong> On-time performance, every time.</li>
+      <li><strong>Customer Focus:</strong> Tailored logistics built around your goals.</li>
+      <li><strong>Innovation:</strong> Embracing logistics tech for smarter solutions.</li>
+    </ul>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="images/delivery.jpg" alt="Regional Delivery">
+        <h3>Regional Delivery</h3>
+        <p>Same-day and scheduled transport for businesses in the Midwest and beyond.</p>
+        <p>HT Logistics LLC is your trusted partner for efficient, safe, and cost-effective logistics solutions.</p>
+        <p>We specialize in box truck transportation, freight coordination, and advanced dispatching.</p>
+      
+      </div>
+      <div class="card">
+        <img src="images/dispatch.jpg" alt="Dispatch Team">
+        <h3>24/7 Dispatch</h3>
+        <p>Real-time load coordination and support from our expert dispatchers.</p>
+        <p>Our dispatch team is available 24/7 to ensure your shipments are handled efficiently and effectively.</p>
+        <p>We provide real-time updates and support, ensuring your cargo is always on track.</p>
+
+      </div>
+      <div class="card">
+        <img src="images/tracking.jpg" alt="Live Tracking">
+        <h3>Live GPS Tracking</h3>
+        <p>Full visibility of cargo location, timing, and delivery status.</p>
+        <p>Our advanced tracking system allows you to monitor your shipments in real-time, providing peace of mind and transparency throughout the delivery process.</p>
+        <p>With our user-friendly interface, you can easily access tracking information and receive notifications about your shipment's status.</p>
+        <p>Stay informed every step of the way with HT Logistics LLC.</p>
+
+      </div>
+      <div class="card">
+        <img src="images/custom.jpg" alt="Custom Solutions">
+        <h3>Custom Solutions</h3>
+        <p>We tailor our services to your specific transport, schedule, and budget.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="global" class="section dark">
+    <h2>Global Reach</h2>
+    <p>Through strategic partnerships, HT Logistics LLC extends services beyond the U.S., enabling cross-border freight movement with customs support and regional compliance expertise.</p>
+  </section>
+
+  <section id="careers" class="section">
+    <h2>Careers</h2>
+    <p>We're hiring drivers, dispatchers, and logistics professionals! Join our team and be part of a fast-moving company with growth opportunities and strong values.</p>
+
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p><strong>HT Logistics LLC</strong><br>
+      7805 NW Tipton Ave, Kansas City, MO 64152<br>
+      Phone: <a href="tel:+15713205826">571-320-5826</a><br>
+      Email: <a href="mailto:htlogisticsllc22@gmail.com">htlogisticsllc22@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 HT Logistics LLC. All rights reserved.</p>
+    <div class="contact-info">
+      <p>Owner: Hailu Sefera</p>
+      <p>Email: htlogisticsllc22@gmail.com | Phone: 571-320-5826</p>
+      <p>7805 NW Tipton Ave, Kansas City, MO 64152</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('active');
+    }
+
+    function closeMenu() {
+      document.getElementById('nav-menu').classList.remove('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const navLinks = document.querySelectorAll('nav ul li a');
+      const sections = document.querySelectorAll('.section');
+
+      function showSection(id) {
+        sections.forEach(section => {
+          section.classList.toggle('active', section.id === id);
+        });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const id = this.getAttribute('href').substring(1);
+          showSection(id);
+        });
+      });
+
+      showSection('about');
+    });
+  </script>
+</body>
+
+</html> 
