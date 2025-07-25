@@ -465,68 +465,91 @@ footer {
 
 
 /* Container for sections */
-.section-container {
+
+
+/* Section Base */
+.info-section {
+  padding: 50px 20px;
+}
+.light-bg {
+  background: #f9f9f9;
+}
+.info-container {
   max-width: 1200px;
   margin: auto;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   gap: 30px;
-  padding: 0 20px; /* Keeps content inside screen on mobile */
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-/* Image styling */
-.image-container img {
+/* Reverse for Hotshot */
+.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Image */
+.info-image img {
   width: 100%;
+  max-width: 550px;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Text styling */
-.text-container {
+/* Text */
+.info-text {
   flex: 1;
   min-width: 300px;
+}
+.info-text h2 {
+  font-size: 2rem;
+  color: #1d3557;
+  margin-bottom: 15px;
+}
+.info-text .highlight {
+  color: #e63946;
+}
+.info-text p {
   font-size: 1.1rem;
   line-height: 1.7;
   color: #333;
+  margin-bottom: 10px;
 }
 
-/* Headings */
-.text-container h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  color: #1d3557;
-}
-
-/* Responsive for Tablets */
-@media (max-width: 992px) {
-  .text-container h2 {
-    font-size: 1.8rem;
-  }
-}
-
-/* Responsive for Mobile */
+/* ✅ Responsive Fix */
 @media (max-width: 768px) {
-  .section-container {
-    flex-direction: column; /* Stack image and text */
-    text-align: center; /* Center text */
-    padding: 0 15px; /* Prevent overflow */
+  .info-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
   }
-
-  .image-container img {
-    width: 100%; /* Full width image */
+  .info-section {
+    padding: 30px 15px;
   }
-
-  .text-container {
-    width: 100%; /* Ensure text fits screen */
-    font-size: 1rem;
-  }
-
-  .text-container h2 {
+  .info-text h2 {
     font-size: 1.6rem;
   }
+  .info-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .info-image img {
+    max-width: 100%;
+    height: auto;
+  }
 }
+
+/* Small Devices */
+@media (max-width: 480px) {
+  .info-text h2 {
+    font-size: 1.4rem;
+  }
+  .info-text p {
+    font-size: 0.95rem;
+  }
+}
+
 
 </style>
 
@@ -601,27 +624,24 @@ footer {
 
 
 
-  <!-- ABOUT -->
- <section id="about"  style="padding: 50px 0; background: #f9f9f9;">
-  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 30px;">
-    
+ <!-- ABOUT -->
+<section id="about" class="info-section light-bg">
+  <div class="info-container">
     <!-- Image -->
-    <div class="image-container" style="flex: 1; min-width: 300px;">
-      <img src="images/Box Truck.jpg" alt="HT Logistics Fleet" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <div class="info-image">
+      <img src="images/Box Truck.jpg" alt="HT Logistics Fleet">
     </div>
 
     <!-- Text -->
-    <div class="text-container" style="flex: 1; min-width: 300px;">
-      <h2 style="font-size: 2rem; color: #1d3557; margin-bottom: 15px;">Who We Are</h2>
-      <p style="font-size: 1.1rem; line-height: 1.7; color: #333;">
+    <div class="info-text">
+      <h2>Who We Are</h2>
+      <p>
         HT Logistics LLC, founded in 2022 in Kansas City, is a fast-growing logistics company backed by over 
         20 years of leadership experience in retail and international logistics. We specialize in box truck 
         transportation, freight coordination, and advanced dispatching, with an unwavering focus on safety, 
-        technology, and customer satisfaction. Our dedicated team provides personalized solutions to ensure 
-        every shipment is handled with care and delivered on time, supported by modern box trucks, experienced
-        dispatchers, real-time tracking, and 24/7 assistance.
+        technology, and customer satisfaction.
       </p>
-      <p style="font-size: 1.1rem; line-height: 1.7; color: #333; margin-top: 10px;">
+      <p>
         Committed to transparency, reliability, and innovation, we simplify logistics so businesses can focus 
         on growth while we manage transportation complexities. From local deliveries to cross-country freight 
         and global expansion, HT Logistics is your trusted partner for efficient, tailored logistics solutions.
@@ -630,31 +650,35 @@ footer {
   </div>
 </section>
 
-<!-- Hotshot Logistics Section -->
-<section id="hotshot" style="padding: 50px 0; background: #fff;">
-  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 30px;">
-    
-    <!-- Text -->
-    <div class="text-container" style="flex: 1; min-width: 300px;">
-      <h2 style="font-size: 2rem; color: #e63946; margin-bottom: 15px;">HOTSHOT LOGISTICS</h2>
-      <p style="font-size: 1.1rem; line-height: 1.7; color: #333;">
-        HT Logistics LLC is your go-to provider for hotshot logistics services, specializing in expedited
-        transportation solutions for time-sensitive shipments. Our hotshot services are designed to meet the
-        urgent needs of businesses requiring fast and reliable delivery.
-      </p>
-      <p style="font-size: 1.1rem; line-height: 1.7; color: #333; margin-top: 10px;">
-        With a dedicated team of logistics professionals and a fleet of modern vehicles, we ensure that your 
-        time-sensitive cargo is prioritized and delivered on schedule. Whether it's a last-minute shipment or 
-        a critical delivery, HT Logistics provides the swift and efficient logistics solutions you need.
-      </p>
+<!-- HOTSHOT -->
+<!-- HOTSHOT -->
+<section id="hotshot" class="info-section">
+  <div class="info-container reverse">
+    <!-- Image First -->
+    <div class="info-image">
+      <img src="images/HOTshot.jpg" alt="Hotshot Logistics">
     </div>
 
-    <!-- Image -->
-    <div class="image-container" style="flex: 1; min-width: 300px;">
-      <img src="images/HOTshot.jpg" alt="Hotshot Logistics" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <!-- Text Second -->
+    <div class="info-text">
+      <h2 class="highlight">HOTSHOT LOGISTICS</h2>
+      <p>
+        HT Logistics LLC is your go-to provider for hotshot logistics services, specializing in expedited
+        transportation solutions for time-sensitive shipments. Our hotshot services are designed to meet the
+        urgent needs of businesses requiring fast and reliable delivery.</p>
+      <p>
+        With a dedicated team of logistics professionals and a fleet of modern vehicles, we ensure that your 
+        time-sensitive cargo is prioritized and delivered on schedule.
+        Our hotshot logistics service is available 24/7, providing real-time tracking and updates to keep you informed every step of the way.
+        Whether it's a last-minute delivery or a high-priority load, HT Logistics has you covered with our hotshot logistics solutions.
+
+        We understand the importance of speed and reliability in hotshot logistics. Our team is available 24/7 to assist you with your urgent shipping needs.
+      </p>
     </div>
   </div>
 </section>
+
+
 
 
   <section class="contact-section">
