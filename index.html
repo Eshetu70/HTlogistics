@@ -147,40 +147,41 @@ h1, h2 {
 /* ==============================
    DROPDOWN MENU (PROFESSIONAL SCROLLABLE)
 ============================== */
+/* ==============================
+   DROPDOWN MENU (Responsive & Professional)
+============================== */
 .dropdown-menu {
-  position: absolute; /* ✅ Removed fixed to allow natural flow */
+  position: fixed; /* ✅ Always stays on screen */
   top: 0;
   right: 0;
-  width: 320px;
-  max-height: 90vh; /* ✅ Fit inside screen height */
-  overflow-y: auto; /* ✅ Enable scroll if content is too long */
-  background: #003049;
+  width: 80%; /* ✅ Responsive width for all devices */
+  max-width: 300px; /* ✅ Prevent overly wide menu */
+  height: 100%; /* ✅ Full height for scroll */
+  background: #003049; /* Brand color */
   color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  border-radius: 0 0 0 20px;
-  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+  padding: 2rem 1.5rem;
+  transform: translateX(100%); /* Hidden by default */
   transition: transform 0.3s ease-in-out;
-  transform: translateX(100%); /* ✅ Hidden by default */
   z-index: 2000;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+  overflow-y: auto; /* ✅ Enable scrolling if content too long */
 }
 
-/* Show menu when active */
+/* Show menu */
 .dropdown-menu.active {
   transform: translateX(0);
 }
 
-/* ✅ Scrollbar Styling */
+/* Scrollbar Styling */
 .dropdown-menu::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
-
 .dropdown-menu::-webkit-scrollbar-thumb {
   background: #f77f00;
   border-radius: 4px;
 }
-
 .dropdown-menu::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
 }
@@ -192,10 +193,9 @@ h1, h2 {
   font-size: 2rem;
   color: #f77f00;
   cursor: pointer;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }
-
 .dropdown-menu .close-icon:hover {
   transform: rotate(90deg);
 }
@@ -206,28 +206,33 @@ h1, h2 {
   padding: 0;
   margin: 0;
 }
-
 .dropdown-menu ul li {
-  margin-bottom: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  transition: background 0.3s ease;
+  margin-bottom: 1.2rem;
 }
-
-.dropdown-menu ul li:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
 .dropdown-menu ul li a {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-decoration: none;
-  display: block;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
 }
-
+.dropdown-menu ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f77f00;
+  transition: width 0.3s ease;
+}
 .dropdown-menu ul li a:hover {
   color: #fcbf49;
+}
+.dropdown-menu ul li a:hover::after {
+  width: 100%;
 }
 
 /* Contact Info */
@@ -237,17 +242,32 @@ h1, h2 {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   padding-top: 1rem;
 }
-
 .dropdown-menu .contact-info a {
   color: #fcbf49;
   text-decoration: none;
   display: block;
   margin-top: 0.5rem;
-  transition: color 0.3s ease;
 }
-
 .dropdown-menu .contact-info a:hover {
   color: #fff;
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    width: 75%;
+    max-width: 260px;
+  }
+}
+@media (max-width: 480px) {
+  .dropdown-menu {
+    width: 70%;
+    max-width: 230px;
+    padding: 1.5rem;
+  }
+  .dropdown-menu ul li a {
+    font-size: 1.1rem;
+  }
 }
 
 /* ==============================
@@ -922,26 +942,81 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
 }
 
 /* Founder Styling */
+/* Founder Profile Section */
 .founder-profile {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: center;
+  gap: 25px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.founder-profile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Founder Image */
+/* Accordion Buttons */
+.accordion {
+  background: #003049;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: 0.3s ease;
+}
+
+.accordion:hover {
+  background: #f77f00;
+}
+
+.accordion-content {
+  display: none;
   background: #fff;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.accordion.active + .accordion-content {
+  display: block;
+}
+
+/* Founder Profile */
+.founder-profile {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
 .founder-profile img {
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #f77f00;
+  border: 4px solid #f77f00;
 }
 
 .founder-text h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #1d3557;
   margin-bottom: 10px;
 }
@@ -949,22 +1024,11 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
 .founder-text p {
   font-size: 1rem;
   color: #333;
-  margin-bottom: 10px;
-  line-height: 1.6;
+  margin-bottom: 12px;
+  line-height: 1.7;
 }
 
-@media (max-width: 900px) {
-  .resume-container {
-    grid-template-columns: 1fr;
-  }
-  .founder-profile {
-    flex-direction: column;
-    text-align: center;
-  }
-  .founder-profile img {
-    margin-bottom: 15px;
-  }
-}
+
 
 </style>
 
@@ -1160,106 +1224,94 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
   <!-- ===== EXPERIENCE & FOUNDER SECTION ===== -->
 
 <section id="experience-education" class="section resume-section">
-
   <div class="resume-container">
 
     <!-- Founder & CEO -->
     <div class="resume-block full-width">
-      <h2><i class="fas fa-user-tie"></i> Founder & CEO</h2>
-      <div class="founder-profile">
-        <img src="images/hailu.jpg" alt="Founder and CEO of HT Logistics">
-        <div class="founder-text">
-          <h3>Hailu Sefera</h3>
-          <p>
-            Self-motivated and detail-oriented leader with over 
-            <strong>20 years of experience</strong> in logistics, operations, engineering, and business management. 
-            Skilled in <strong>Project Management, Supply Chain Optimization, Coaching & Development, and Strategic Leadership</strong>.
-          </p>
-          <p>
-            Holds an <strong>MBA</strong> from the University of Greenwich and a 
-            <strong>Master’s in Mechanical Engineering</strong> from UMKC. 
-            Extensive experience in global operations, business development, and 
-            managing cross-functional teams across <strong>25+ countries</strong>.
-          </p>
-          <p><em>“My mission is to simplify logistics through technology, trust, and transparency.”</em></p>
+      <button class="accordion"><i class="fas fa-user-tie"></i> Founder & CEO</button>
+      <div class="accordion-content">
+        <div class="founder-profile">
+          <img src="images/hailu.jpg" alt="Founder and CEO of HT Logistics">
+          <div class="founder-text">
+            <h3>Hailu Sefera</h3>
+            <p>
+              Self-motivated and detail-oriented leader with over 
+              <strong>20 years of experience</strong> in logistics, operations, engineering, and business management. 
+              Skilled in <strong>Project Management, Supply Chain Optimization, Coaching & Development, and Strategic Leadership</strong>.
+            </p>
+            <p>
+              Holds an <strong>MBA</strong> from the University of Greenwich and a 
+              <strong>Master’s in Mechanical Engineering</strong> from UMKC. 
+              Extensive experience in global operations, business development, and 
+              managing cross-functional teams across <strong>25+ countries</strong>.
+            </p>
+            <p><em>“My mission is to simplify logistics through technology, trust, and transparency.”</em></p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Professional Experience -->
     <div class="resume-block">
-      <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
-
-      <div class="resume-item">
-        <h3>Amazon – Kansas City, KS</h3>
-        <p class="role">Area Manager II, Operations <span>(Jul 2023 – May 2025)</span></p>
-        <ul>
-          <li>Led teams of up to <strong>200 associates</strong>, achieving high operational standards.</li>
-          <li>Implemented <strong>Lean Six Sigma</strong> to optimize workflows and reduce defects.</li>
-          <li>Collaborated with HR, Safety, and IT for staffing and compliance improvements.</li>
-        </ul>
-      </div>
-
-      <div class="resume-item">
-        <p class="role">Area Manager I, Operations <span>(Jun 2022 – Jul 2023)</span></p>
-        <ul>
-          <li>Oversaw daily operations across multiple shifts with strong KPI results.</li>
-          <li>Mentored and developed future leaders through structured programs.</li>
-        </ul>
-      </div>
-
-      <div class="resume-item">
-        <h3>Shamrock Trading Corporation – Overland Park, KS</h3>
-        <p class="role">Financial Account Representative <span>(Jan 2021 – Jun 2022)</span></p>
-        <ul>
-          <li>Managed <strong>75+ trucking accounts</strong> and resolved 40+ collection issues weekly.</li>
-          <li>Trained 70+ clients in platform use; utilized <strong>Power BI & Excel</strong> for insights.</li>
-        </ul>
-      </div>
-
-      <div class="resume-item">
-        <h3>Baldan Implementos Agrícolas – London, UK</h3>
-        <p class="role">Technical Sales Representative <span>(Oct 2016 – Mar 2018)</span></p>
-        <ul>
-          <li>Drove sales and dealer training across 8 African countries.</li>
-        </ul>
-      </div>
-
-      <div class="resume-item">
-        <h3>HG Agri-Tech Plc – Ethiopia</h3>
-        <p class="role">Founder & Managing Director <span>(Sep 2015 – Feb 2018)</span></p>
-        <ul>
-          <li>Established a profitable agri-tech firm; led strategy, operations, and global partnerships.</li>
-        </ul>
+      <button class="accordion"><i class="fas fa-briefcase"></i> Professional Experience</button>
+      <div class="accordion-content">
+        <div class="resume-item">
+          <h3>Amazon – Kansas City, KS</h3>
+          <p class="role">Area Manager II, Operations <span>(Jul 2023 – May 2025)</span></p>
+          <ul>
+            <li>Led teams of up to <strong>200 associates</strong>, achieving high operational standards.</li>
+            <li>Implemented <strong>Lean Six Sigma</strong> to optimize workflows and reduce defects.</li>
+            <li>Collaborated with HR, Safety, and IT for staffing and compliance improvements.</li>
+          </ul>
+        </div>
+        <div class="resume-item">
+          <p class="role">Area Manager I, Operations <span>(Jun 2022 – Jul 2023)</span></p>
+          <ul>
+            <li>Oversaw daily operations across multiple shifts with strong KPI results.</li>
+            <li>Mentored and developed future leaders through structured programs.</li>
+          </ul>
+        </div>
+        <div class="resume-item">
+          <h3>Shamrock Trading Corporation – Overland Park, KS</h3>
+          <p class="role">Financial Account Representative <span>(Jan 2021 – Jun 2022)</span></p>
+          <ul>
+            <li>Managed <strong>75+ trucking accounts</strong> and resolved 40+ collection issues weekly.</li>
+            <li>Trained 70+ clients in platform use; utilized <strong>Power BI & Excel</strong> for insights.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <!-- Education -->
     <div class="resume-block">
-      <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-      <div class="resume-item">
-        <h3>University of Missouri–Kansas City</h3>
-        <p class="role">Master of Engineering (MEng), Mechanical Engineering <span>2022 – 2024</span></p>
-        <p class="detail">GPA: 3.9/4.0 | Focus: Materials Science & Process Optimization</p>
-      </div>
-      <div class="resume-item">
-        <h3>University of Greenwich – London, UK</h3>
-        <p class="role">Master of Business Administration (MBA), Operations & Business Management</p>
-      </div>
-      <div class="resume-item">
-        <h3>University of Kansas</h3>
-        <p class="role">Data Analytics Bootcamp <span>2019 – 2020</span></p>
-        <p class="detail">Skills: Python, SQL, Tableau, R, Power BI, Advanced Excel</p>
+      <button class="accordion"><i class="fas fa-graduation-cap"></i> Education</button>
+      <div class="accordion-content">
+        <div class="resume-item">
+          <h3>University of Missouri–Kansas City</h3>
+          <p class="role">Master of Engineering (MEng), Mechanical Engineering <span>2022 – 2024</span></p>
+          <p class="detail">GPA: 3.9/4.0 | Focus: Materials Science & Process Optimization</p>
+        </div>
+        <div class="resume-item">
+          <h3>University of Greenwich – London, UK</h3>
+          <p class="role">Master of Business Administration (MBA), Operations & Business Management</p>
+        </div>
+        <div class="resume-item">
+          <h3>University of Kansas</h3>
+          <p class="role">Data Analytics Bootcamp <span>2019 – 2020</span></p>
+          <p class="detail">Skills: Python, SQL, Tableau, R, Power BI, Advanced Excel</p>
+        </div>
       </div>
     </div>
 
     <!-- Certifications -->
     <div class="resume-block">
-      <h2><i class="fas fa-certificate"></i> Certifications</h2>
-      <ul class="certifications">
-        <li>Lean Six Sigma Yellow Belt – Amazon</li>
-        <li>Verified International Academic Qualifications – WES</li>
-      </ul>
+      <button class="accordion"><i class="fas fa-certificate"></i> Certifications</button>
+      <div class="accordion-content">
+        <ul class="certifications">
+          <li>Lean Six Sigma Yellow Belt – Amazon</li>
+          <li>Verified International Academic Qualifications – WES</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -1390,6 +1442,24 @@ function scrollToBottom() {
 }
 
 </script>
+
+
+
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      acc.classList.toggle('active');
+      const panel = acc.nextElementSibling;
+      if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+      } else {
+        panel.style.display = 'block';
+      }
+    });
+  });
+</script>
+
 
 
 </body>
