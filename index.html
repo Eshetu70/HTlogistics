@@ -459,6 +459,75 @@ footer {
   vertical-align: middle;
 }
 
+
+
+
+
+
+/* Container for sections */
+.section-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  padding: 0 20px; /* Keeps content inside screen on mobile */
+}
+
+/* Image styling */
+.image-container img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* Text styling */
+.text-container {
+  flex: 1;
+  min-width: 300px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Headings */
+.text-container h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #1d3557;
+}
+
+/* Responsive for Tablets */
+@media (max-width: 992px) {
+  .text-container h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .section-container {
+    flex-direction: column; /* Stack image and text */
+    text-align: center; /* Center text */
+    padding: 0 15px; /* Prevent overflow */
+  }
+
+  .image-container img {
+    width: 100%; /* Full width image */
+  }
+
+  .text-container {
+    width: 100%; /* Ensure text fits screen */
+    font-size: 1rem;
+  }
+
+  .text-container h2 {
+    font-size: 1.6rem;
+  }
+}
+
 </style>
 
 
