@@ -144,28 +144,48 @@ h1, h2 {
 /* ==============================
    DROPDOWN MENU (AMAZING LOOK)
 ============================== */
+/* ==============================
+   DROPDOWN MENU (PROFESSIONAL SCROLLABLE)
+============================== */
 .dropdown-menu {
-  position: fixed;
+  position: absolute; /* ✅ Removed fixed to allow natural flow */
   top: 0;
-  right: -100%;
+  right: 0;
   width: 320px;
-  height: 100%;
-  background: rgba(0, 48, 73, 0.97);
-  backdrop-filter: blur(8px);
+  max-height: 90vh; /* ✅ Fit inside screen height */
+  overflow-y: auto; /* ✅ Enable scroll if content is too long */
+  background: #003049;
   color: #fff;
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  transition: right 0.3s ease-in-out;
-  z-index: 2000;
   border-radius: 0 0 0 20px;
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%); /* ✅ Hidden by default */
+  z-index: 2000;
 }
 
+/* Show menu when active */
 .dropdown-menu.active {
-  right: 0;
+  transform: translateX(0);
 }
 
+/* ✅ Scrollbar Styling */
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: #f77f00;
+  border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Close Icon */
 .dropdown-menu .close-icon {
   display: block;
   align-self: flex-end;
@@ -180,6 +200,7 @@ h1, h2 {
   transform: rotate(90deg);
 }
 
+/* Navigation Links */
 .dropdown-menu ul {
   list-style: none;
   padding: 0;
@@ -209,6 +230,7 @@ h1, h2 {
   color: #fcbf49;
 }
 
+/* Contact Info */
 .dropdown-menu .contact-info {
   margin-top: auto;
   font-size: 1rem;
@@ -502,12 +524,8 @@ footer {
   flex: 1;
   min-width: 300px;
 }
-.info-text h2 {
-  font-size: 2.5rem;
-  color: #003049;
-  margin-bottom: 2rem;
-  position: relative;
-}
+
+
 .info-text .highlight {
   color: #e63946;
 }
@@ -556,6 +574,64 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
 }
 
 
+
+
+/* Scroll Buttons Container */
+/* Scroll Buttons Container */
+.scroll-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 3000;
+}
+
+/* Scroll Button Styling */
+.scroll-btn {
+  width: 60px;
+  height: 60px;
+  background: #003049;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column; /* Logo + arrow stacked */
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background: #f77f00;
+  transform: scale(1.1);
+}
+
+.scroll-logo {
+  font-size: 14px;
+  color: #fff;
+}
+
+.scroll-icon {
+  font-size: 14px;
+  margin-top: 3px;
+  color: #fff;
+}
+
+/* Show only on larger screens */
+@media (max-width: 768px) {
+  .scroll-buttons {
+    display: none;
+  }
+}
+
+
 </style>
 
 
@@ -579,6 +655,7 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
     <li><a href="#services" onclick="showSection('services')">Services</a></li>
     <li><a href="#global" onclick="showSection('global')">Global Reach</a></li>
     <li><a href="#careers" onclick="showSection('careers')">Careers</a></li>
+      <li><a href="#experience-education" onclick="showSection('experience-education')">Founder & CEO</a></li>
     <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
   </ul>
 
@@ -599,12 +676,14 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
     <li><a href="#services" onclick="navigate('services')">Services</a></li>
     <li><a href="#global" onclick="navigate('global')">Global Reach</a></li>
     <li><a href="#careers" onclick="navigate('careers')">Careers</a></li>
+       <li><a href="#experience-education" onclick="navigate('experience-education')">Founder & CEO</a></li>
     <li><a href="#contact" onclick="navigate('contact')">Contact</a></li>
   </ul>
 
   <div class="contact-info">
     <p><strong>Contact Us:</strong></p>
     <a href="tel:+15713205826">📞 571-320-5826</a>
+     <a href="tel:+15713205826">📞 816-777-8082</a>
     <a href="mailto:htlogisticsllc22@gmail.com">📧 htlogisticsllc22@gmail.com</a>
   </div>
 </div>
@@ -762,6 +841,131 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
       padding: 20px;
     }
   }
+
+
+
+
+
+
+
+  /* Resume Section Styling */
+.resume-section {
+  background: #f9f9f9;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.resume-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.resume-block h2 {
+  color: #1d3557;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #f77f00;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.resume-item {
+  margin-bottom: 20px;
+}
+
+.resume-item h3 {
+  color: #003049;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.resume-item .role {
+  font-weight: bold;
+  color: #f77f00;
+  margin-bottom: 8px;
+}
+
+.resume-item .detail {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.resume-item ul {
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+.resume-item ul li {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.certifications {
+  list-style: none;
+  padding: 0;
+}
+
+.certifications li {
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Founder Styling */
+.founder-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.founder-profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f77f00;
+}
+
+.founder-text h3 {
+  font-size: 1.5rem;
+  color: #1d3557;
+  margin-bottom: 10px;
+}
+
+.founder-text p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .resume-container {
+    grid-template-columns: 1fr;
+  }
+  .founder-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+  .founder-profile img {
+    margin-bottom: 15px;
+  }
+}
+
 </style>
 
 <!-- EmailJS Script -->
@@ -879,7 +1083,7 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
     <h2>Our Services</h2>
     <div class="card-container">
       <div class="card">
-        <img src="images/delivery.jpg" alt="Regional Delivery">
+        <img src="images/main_services_truck.webp" alt="Regional Delivery">
         <h3>Regional Delivery</h3>
         <p>Same-day and scheduled transport for businesses in the Midwest and beyond.</p>
         <ul>
@@ -890,7 +1094,7 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
 
       </div>
       <div class="card">
-        <img src="images/dispatch.jpg" alt="Dispatch Team">
+        <img src="images/Customized-Logistics-Solutions-with-CriticaLog.jpg" alt="Dispatch Team">
         <h3>24/7 Dispatch</h3>
         <p>Real-time load coordination and expert support, available 24/7.</p>
         <ul>
@@ -900,7 +1104,7 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
         </ul>
       </div>
       <div class="card">
-        <img src="images/tracking.jpg" alt="Live Tracking">
+        <img src="images/realtime-logistics-tracking-system-showing-vehicle-locations-shipment-progress-map_1327465-70819.avif" alt="Live Tracking">
         <h3>Live GPS Tracking</h3>
         <p>Track your shipments in real-time for full visibility and peace of mind.</p>
         <ul>
@@ -910,7 +1114,7 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
         </ul>
       </div>
       <div class="card">
-        <img src="images/custom.jpg" alt="Custom Solutions">
+        <img src="images/mauell_consoles_12-scaled.jpeg" alt="Custom Solutions">
         <h3>Custom Solutions</h3>
         <p>Tailored services to meet your schedule, budget, and needs.</p>
         <ul>
@@ -952,12 +1156,122 @@ p{font-size: 1.1rem; line-height: 1.7;  margin-bottom: 15px;}
     </ul>
   </section>
 
+
+  <!-- ===== EXPERIENCE & FOUNDER SECTION ===== -->
+
+<section id="experience-education" class="section resume-section">
+
+  <div class="resume-container">
+
+    <!-- Founder & CEO -->
+    <div class="resume-block full-width">
+      <h2><i class="fas fa-user-tie"></i> Founder & CEO</h2>
+      <div class="founder-profile">
+        <img src="images/hailu.jpg" alt="Founder and CEO of HT Logistics">
+        <div class="founder-text">
+          <h3>Hailu Sefera</h3>
+          <p>
+            Self-motivated and detail-oriented leader with over 
+            <strong>20 years of experience</strong> in logistics, operations, engineering, and business management. 
+            Skilled in <strong>Project Management, Supply Chain Optimization, Coaching & Development, and Strategic Leadership</strong>.
+          </p>
+          <p>
+            Holds an <strong>MBA</strong> from the University of Greenwich and a 
+            <strong>Master’s in Mechanical Engineering</strong> from UMKC. 
+            Extensive experience in global operations, business development, and 
+            managing cross-functional teams across <strong>25+ countries</strong>.
+          </p>
+          <p><em>“My mission is to simplify logistics through technology, trust, and transparency.”</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional Experience -->
+    <div class="resume-block">
+      <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+
+      <div class="resume-item">
+        <h3>Amazon – Kansas City, KS</h3>
+        <p class="role">Area Manager II, Operations <span>(Jul 2023 – May 2025)</span></p>
+        <ul>
+          <li>Led teams of up to <strong>200 associates</strong>, achieving high operational standards.</li>
+          <li>Implemented <strong>Lean Six Sigma</strong> to optimize workflows and reduce defects.</li>
+          <li>Collaborated with HR, Safety, and IT for staffing and compliance improvements.</li>
+        </ul>
+      </div>
+
+      <div class="resume-item">
+        <p class="role">Area Manager I, Operations <span>(Jun 2022 – Jul 2023)</span></p>
+        <ul>
+          <li>Oversaw daily operations across multiple shifts with strong KPI results.</li>
+          <li>Mentored and developed future leaders through structured programs.</li>
+        </ul>
+      </div>
+
+      <div class="resume-item">
+        <h3>Shamrock Trading Corporation – Overland Park, KS</h3>
+        <p class="role">Financial Account Representative <span>(Jan 2021 – Jun 2022)</span></p>
+        <ul>
+          <li>Managed <strong>75+ trucking accounts</strong> and resolved 40+ collection issues weekly.</li>
+          <li>Trained 70+ clients in platform use; utilized <strong>Power BI & Excel</strong> for insights.</li>
+        </ul>
+      </div>
+
+      <div class="resume-item">
+        <h3>Baldan Implementos Agrícolas – London, UK</h3>
+        <p class="role">Technical Sales Representative <span>(Oct 2016 – Mar 2018)</span></p>
+        <ul>
+          <li>Drove sales and dealer training across 8 African countries.</li>
+        </ul>
+      </div>
+
+      <div class="resume-item">
+        <h3>HG Agri-Tech Plc – Ethiopia</h3>
+        <p class="role">Founder & Managing Director <span>(Sep 2015 – Feb 2018)</span></p>
+        <ul>
+          <li>Established a profitable agri-tech firm; led strategy, operations, and global partnerships.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="resume-block">
+      <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+      <div class="resume-item">
+        <h3>University of Missouri–Kansas City</h3>
+        <p class="role">Master of Engineering (MEng), Mechanical Engineering <span>2022 – 2024</span></p>
+        <p class="detail">GPA: 3.9/4.0 | Focus: Materials Science & Process Optimization</p>
+      </div>
+      <div class="resume-item">
+        <h3>University of Greenwich – London, UK</h3>
+        <p class="role">Master of Business Administration (MBA), Operations & Business Management</p>
+      </div>
+      <div class="resume-item">
+        <h3>University of Kansas</h3>
+        <p class="role">Data Analytics Bootcamp <span>2019 – 2020</span></p>
+        <p class="detail">Skills: Python, SQL, Tableau, R, Power BI, Advanced Excel</p>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="resume-block">
+      <h2><i class="fas fa-certificate"></i> Certifications</h2>
+      <ul class="certifications">
+        <li>Lean Six Sigma Yellow Belt – Amazon</li>
+        <li>Verified International Academic Qualifications – WES</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
   <!-- CONTACT -->
   <section id="contact" class="section dark">
     <h2>Contact Us</h2>
     <p><strong>HT Logistics LLC</strong><br>
       7805 NW Tipton Ave, Kansas City, MO 64152<br>
       Phone: <a href="tel:+15713205826">571-320-5826</a><br>
+        Phone: <a href="tel:+15713205826">816-777-8082</a><br>
       Email: <a href="mailto:htlogisticsllc22@gmail.com">htlogisticsllc22@gmail.com</a></p>
   </section>
 
@@ -1040,6 +1354,43 @@ function navigate(id) {
   closeMenu();
 }
 </script>
+
+
+
+
+<!-- Scroll Buttons -->
+<!-- Scroll Buttons -->
+<div class="scroll-buttons">
+  <!-- Scroll Up -->
+  <button class="scroll-btn scroll-up" onclick="scrollToTop()">
+    <span class="scroll-logo">HT</span>
+    <i class="fas fa-arrow-up scroll-icon"></i>
+  </button>
+  
+  <!-- Scroll Down -->
+  <button class="scroll-btn scroll-down" onclick="scrollToBottom()">
+    <span class="scroll-logo">HT</span>
+    <i class="fas fa-arrow-down scroll-icon"></i>
+  </button>
+</div>
+
+<script>
+  function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function scrollToBottom() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth"
+  });
+}
+
+</script>
+
 
 </body>
 
