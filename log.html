@@ -1,356 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HT Logistics LLC</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: #f8f9fa;
-      color: #333;
-      line-height: 1.8;
-      font-size: 18px;
-    }
-
-    h1, h2 {
-      color: #003049;
-      margin-bottom: 1rem;
-      font-weight: bold;
-    }
-
-    /* HEADER */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: #003049;
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
- .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 40px; /* space for curves */
-}
-
-.logo-highlight {
-  color: #f77f00;
-}
-
-/* Curved Line 1 (Orange) */
-.logo::before,
-.logo::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 140%;
-  height: 25px;
-  border-radius: 50%;
-  z-index: -1;
-}
-
-/* First Curve - Orange */
-.logo::before {
-  bottom: 15px;
-  border-bottom: 4px solid #f77f00; /* Orange arc */
-}
-
-/* Second Curve - White */
-.logo::after {
-  bottom: 0;
-  border-bottom: 4px solid #fff; /* White arc */
-}
-
-
-
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
-    }
-
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.3rem 0.5rem;
-      transition: 0.3s;
-    }
-
-    nav ul li a.active, nav ul li a:hover {
-      color: #fcbf49;
-      border-bottom: 2px solid #fcbf49;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    /* Mobile Menu */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: #003049;
-        padding: 1rem;
-      }
-      nav.active ul {
-        display: flex;
-      }
-    }
-
-    /* HERO */
-    .hero {
-      height: 80vh;
-      background: url('images/logistics-bg.jpg') center/cover no-repeat;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      text-align: center;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 48, 73, 0.6);
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-
-    .hero-overlay {
-      position: relative;
-      z-index: 2;
-      padding: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      color: #fcbf49;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-    }
-
-    /* SECTIONS */
-    .section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    /* Background Styles */
-    #about {
-      background: linear-gradient(135deg, #e3f2fd, #ffffff);
-    }
-
-    #mission {
-      background: linear-gradient(135deg, #fff5e6, #ffffff);
-    }
-
-    #vision {
-      background: linear-gradient(135deg, #f0f8ff, #ffffff);
-    }
-
-    #values {
-      background: linear-gradient(135deg, #f9f9f9, #e3e6e9);
-    }
-
-    #services {
-      background: linear-gradient(135deg, #e8f5e9, #ffffff);
-    }
-
-    #global {
-      background: linear-gradient(135deg, #f7f7f7, #ffffff);
-    }
-
-    #careers {
-      background: linear-gradient(135deg, #fffaf0, #ffffff);
-    }
-
-    #contact {
-      background: #003049;
-      color: #fff;
-    }
-
-    /* SPLIT ABOUT SECTION */
-    .split {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .split img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    /* LIST STYLING */
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul li {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
-    ul li::before {
-      content: "\f00c"; /* FontAwesome check icon */
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      position: absolute;
-      left: 0;
-      color: #f77f00;
-    }
-
-    /* CARDS */
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      padding: 1rem;
-      text-align: center;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .card h3 {
-      color: #003049;
-      margin-bottom: 1rem;
-    }
-
-    .card p {
-      font-size: 1rem;
-      color: #555;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #003049;
-      color: #fff;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    footer a {
-      color: #fcbf49;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER -->
-  <header class="navbar">
-    <div class="logo"><span class="logo-highlight">HT</span> Logistics LLC</div>
-    
-    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')"><i class="fas fa-bars"></i></div>
-    <nav>
-      <ul>
-        <li><a href="#about" class="active">Who We Are</a></li>
-        <li><a href="#mission">Mission</a></li>
-        <li><a href="#vision">Vision</a></li>
-        <li><a href="#values">Values</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#global">Global Reach</a></li>
-        <li><a href="#careers">Careers</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>Smart Logistics. Global Reach.</h1>
-      <p>Reliable Box Truck & Dispatch Services Across the U.S. and Beyond</p>
+<!-- ABOUT -->
+<section id="about" style="padding: 50px 0; background: #f9f9f9;">
+  <div class="section-container">
+    <!-- Image -->
+    <div class="image-container">
+      <img src="images/Box Truck.jpg" alt="HT Logistics Fleet">
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="split">
-      <div class="image-container">
-        <img src="images/Box Truck.jpg" alt="HT Logistics Fleet">
-      </div>
-      <div class="text-container">
-        <h2>Who We Are</h2>
-        <p>HT Logistics LLC, founded in 2022 in Kansas City, is a fast-growing logistics company backed by over 
-            20 years of leadership experience in retail and international logistics.</p>
-      </div>
+    <!-- Text -->
+    <div class="text-container">
+      <h2>Who We Are</h2>
+     <p>
+        HT Logistics LLC, founded in 2022 in Kansas City, is a fast-growing logistics company backed by over 
+        20 years of leadership experience in retail and international logistics. We specialize in box truck 
+        transportation, freight coordination, and advanced dispatching, with an unwavering focus on safety, 
+        technology, and customer satisfaction. Our dedicated team provides personalized solutions to ensure 
+        every shipment is handled with care and delivered on time, supported by modern box trucks, experienced
+        dispatchers, real-time tracking, and 24/7 assistance.
+      </p> 
+       <p>
+        Committed to transparency, reliability, and innovation, we simplify logistics so businesses can focus 
+        on growth while we manage transportation complexities. From local deliveries to cross-country freight 
+        and global expansion, HT Logistics is your trusted partner for efficient, tailored logistics solutions.
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <h2>Our Services</h2>
-    <div class="card-container">
-      <div class="card">
-        <img src="images/delivery.jpg" alt="Regional Delivery">
-        <h3>Regional Delivery</h3>
-        <p>Same-day and scheduled transport for businesses in the Midwest and beyond.</p>
-      </div>
-      <div class="card">
-        <img src="images/dispatch.jpg" alt="Dispatch">
-        <h3>24/7 Dispatch</h3>
-        <p>Real-time load coordination and expert support, available 24/7.</p>
-      </div>
+<!-- HOTSHOT -->
+<section id="hotshot" style="padding: 50px 0; background: #fff;">
+  <div class="section-container reverse">
+    <!-- Text -->
+    <div class="text-container">
+      <h2 style="color:#e63946;">HOTSHOT LOGISTICS</h2>
+      <p>
+        Our Hotshot Logistics service is designed for urgent, time-sensitive deliveries. With a fleet of
+        specialized vehicles and a team of experienced drivers, we ensure that your critical shipments
+        reach their destination as quickly as possible. Whether it's a last-minute delivery or a
+        high-priority load, HT Logistics has you covered.
+      </p>
+        <p>
+            We understand the importance of speed and reliability in hotshot logistics. Our team is available
+            24/7 to coordinate your urgent shipments, providing real-time tracking and updates to keep you
+            informed every step of the way. Trust HT Logistics for your hotshot needs, where urgency meets
+            excellence in service.
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 HT Logistics LLC. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    <!-- Image -->
+    <div class="image-container">
+      <img src="images/HOTshot.jpg" alt="Hotshot Logistics">
+    </div>
+  </div>
+</section>
