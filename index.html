@@ -465,6 +465,7 @@ footer {
 
 
 /* Container for sections */
+/* Default Desktop Layout */
 .section-container {
   max-width: 1200px;
   margin: auto;
@@ -472,24 +473,27 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   gap: 30px;
-  padding: 0 20px; /* Keeps content inside screen on mobile */
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-/* Image styling */
+/* Image Styling */
 .image-container img {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   object-fit: cover;
+  display: block;
 }
 
-/* Text styling */
+/* Text Styling */
 .text-container {
   flex: 1;
   min-width: 300px;
   font-size: 1.1rem;
   line-height: 1.7;
   color: #333;
+  word-wrap: break-word;
 }
 
 /* Headings */
@@ -499,34 +503,57 @@ footer {
   color: #1d3557;
 }
 
-/* Responsive for Tablets */
+/* Tablet */
 @media (max-width: 992px) {
   .text-container h2 {
     font-size: 1.8rem;
   }
 }
 
-/* Responsive for Mobile */
+/* Mobile */
 @media (max-width: 768px) {
   .section-container {
-    flex-direction: column; /* Stack image and text */
-    text-align: center; /* Center text */
-    padding: 0 15px; /* Prevent overflow */
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding: 0 10px; /* Very small padding for mobile */
+    margin: 0; /* Remove margin that causes zoom effect */
+  }
+
+  .image-container,
+  .text-container {
+    width: 100%;
+    max-width: 100%; /* Prevent side cut */
+    margin: 0 auto;
   }
 
   .image-container img {
-    width: 100%; /* Full width image */
+    width: 100%;
+    height: auto;
   }
 
   .text-container {
-    width: 100%; /* Ensure text fits screen */
     font-size: 1rem;
+    padding: 0 5px; /* Extra safety for text edge */
   }
 
   .text-container h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-top: 15px;
   }
 }
+
+/* Extra Small Phones */
+@media (max-width: 480px) {
+  .text-container h2 {
+    font-size: 1.3rem;
+  }
+  .text-container {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
 
 </style>
 
